@@ -34,5 +34,4 @@ public class InventoryPageTest extends BaseTest {
         Assert.assertEquals(actualQuantityOfItemsOnCartLogo, expectedQuantityOfItemsOnCartLogo, "The actual quantity of items added to the cart doesn't match the number on the cart logo");
     }
 
-
 }
