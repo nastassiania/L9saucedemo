@@ -8,13 +8,17 @@ import org.tms.page.InventoryPage;
 import org.tms.service.LoginPageService;
 
 public class CartPageButtonsTest extends BaseTest {
-    private InventoryPage inventoryPage = new InventoryPage();
-    private LoginPageService loginPageService = new LoginPageService();
-    private CartPage cartPage = new CartPage();
-    private static int firstItem = 0;
+    private InventoryPage inventoryPage;
+    private LoginPageService loginPageService;
+    private CartPage cartPage;
+    private static int firstItem;
 
     @BeforeClass
     public void login(){
+        inventoryPage = new InventoryPage();
+        loginPageService = new LoginPageService();
+        cartPage = new CartPage();
+        firstItem = 0;
         loginPageService.login();
         inventoryPage.clickAddItemToCartButtonByIndex(firstItem);
         inventoryPage.clickShoppingCartButton();

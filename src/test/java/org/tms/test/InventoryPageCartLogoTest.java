@@ -12,13 +12,16 @@ import org.tms.service.LoginPageService;
 
 public class InventoryPageCartLogoTest extends BaseTest {
 
-    private InventoryPage inventoryPage = new InventoryPage();
-    private LoginPageService loginPageService = new LoginPageService();
-    private static int firstItem = 0;
+    private InventoryPage inventoryPage;
+    private LoginPageService loginPageService;
+    private static int firstItem;
     private static int itemsInCartStart;
 
     @BeforeClass
     private void login() {
+        inventoryPage = new InventoryPage();
+        loginPageService = new LoginPageService();
+        firstItem = 0;
         loginPageService.login();
     }
 

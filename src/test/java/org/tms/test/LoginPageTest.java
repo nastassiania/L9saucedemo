@@ -1,13 +1,19 @@
 package org.tms.test;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.tms.page.InventoryPage;
 import org.tms.service.LoginPageService;
 
 public class LoginPageTest extends BaseTest {
 
-    private LoginPageService loginPageService = new LoginPageService();
+    private LoginPageService loginPageService;
+
+    @BeforeClass
+    private void login() {
+        loginPageService = new LoginPageService();
+    }
 
     @Test
     public void loginTest() {
