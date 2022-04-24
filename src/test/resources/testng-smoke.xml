@@ -4,8 +4,9 @@
     <test name="LoginPageTest">
         <classes>
             <class name="org.tms.test.LoginPageTest" />
-            <class name="org.tms.test.CartPageTest" />
-            <class name="org.tms.test.InventoryPageTest" />
+            <class name="org.tms.test.CartPageItemInfoTest" />
+            <class name="org.tms.test.CartPageButtonsTest" />
+            <class name="org.tms.test.InventoryPageCartLogoTest" />
         </classes>
     </test>
 </suite>

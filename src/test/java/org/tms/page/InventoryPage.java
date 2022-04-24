@@ -3,6 +3,8 @@ package org.tms.page;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+
 public class InventoryPage extends Page {
 
     @FindBy(xpath = "//span[@class='title']")
@@ -14,20 +16,14 @@ public class InventoryPage extends Page {
     @FindBy(xpath = "//span[@class='shopping_cart_badge']")
     private WebElement quantityOfItemsAddedToCart;
 
-    @FindBy(xpath = "//div[@class='inventory_item'][1]//button[contains(text(), 'Add to cart')]")
-    private WebElement addTheFirstItemToCartButton;
+    @FindBy(xpath = "//button[contains(text(), 'Add to cart')]")
+    private List<WebElement> addItemToCartButton;
 
-    @FindBy(xpath = "//div[@class='inventory_item'][1]//button[contains(text(), 'Remove')]")
-    private WebElement removeTheFirstItemFromCartButton;
+    @FindBy(xpath = "//button[contains(text(), 'Remove')]")
+    private List<WebElement> removeItemFromCartButton;
 
-    @FindBy(xpath = "//div[@class='inventory_item'][2]//button[contains(text(), 'Add to cart')]")
-    private WebElement addTheSecondItemToCartButton;
-
-    @FindBy(xpath = "//div[@class='inventory_item'][3]//button[contains(text(), 'Add to cart')]")
-    private WebElement addTheThirdItemToCartButton;
-
-    @FindBy(xpath = "//div[@class='inventory_item'][1]//div[@class='inventory_item_price']")
-    private WebElement priceOfTheFirstItem;
+    @FindBy(xpath = "//div[@class='inventory_item_price']")
+    private List<WebElement> priceOfItem;
 
     public String getTextNameOfMainPageSection() {
         return nameOfMainPageSection.getText();
@@ -37,28 +33,20 @@ public class InventoryPage extends Page {
         shoppingCartButton.click();
     }
 
-    public String getQuantityOfItemsAddedToCart(){
-        return quantityOfItemsAddedToCart.getText();
+    public int getQuantityOfItemsAddedToCart(){
+        return Integer.valueOf(quantityOfItemsAddedToCart.getText());
     }
 
-    public void clickAddTheFirstItemToCartButton() {
-        addTheFirstItemToCartButton.click();
+    public void clickAddItemToCartButtonByIndex(int index) {
+        addItemToCartButton.get(index).click();
     }
 
-    public void clickRemoveTheFirstItemFromCartButton() {
-        removeTheFirstItemFromCartButton.click();
+    public void clickRemoveItemFromCartButtonByIndex(int index) {
+        removeItemFromCartButton.get(index).click();
     }
 
-    public void clickAddTheSecondItemToCartButton() {
-        addTheSecondItemToCartButton.click();
-    }
-
-    public void clickAddTheThirdItemToCartButton() {
-        addTheThirdItemToCartButton.click();
-    }
-
-    public String getTextOfPriceOfTheFirstItem(){
-        return priceOfTheFirstItem.getText();
+    public String getTextOfPriceOfItemByIndex(int index){
+        return priceOfItem.get(index).getText();
     }
 
 }

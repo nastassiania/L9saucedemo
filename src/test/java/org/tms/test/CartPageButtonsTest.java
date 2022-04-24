@@ -7,27 +7,20 @@ import org.tms.page.CartPage;
 import org.tms.page.InventoryPage;
 import org.tms.service.LoginPageService;
 
-public class CartPageTest extends BaseTest{
-
+public class CartPageButtonsTest extends BaseTest {
     private InventoryPage inventoryPage = new InventoryPage();
     private LoginPageService loginPageService = new LoginPageService();
     private CartPage cartPage = new CartPage();
+    private static int firstItem = 0;
 
     @BeforeClass
     public void login(){
         loginPageService.login();
+        inventoryPage.clickAddItemToCartButtonByIndex(firstItem);
+        inventoryPage.clickShoppingCartButton();
     }
 
     @Test(priority = 1)
-    public void verifyCorrectPriceDisplayedOnCartPageTest(){
-        inventoryPage.clickAddTheFirstItemToCartButton();
-        String expectedPriceOfItem = inventoryPage.getTextOfPriceOfTheFirstItem();
-        inventoryPage.clickShoppingCartButton();
-        String actualPriceOfItem = cartPage.getTextOfPriceOfAnItemInCart();
-        Assert.assertEquals(actualPriceOfItem, expectedPriceOfItem, "The price of the first item in the cart doesn't match the expected one!");
-    }
-
-    @Test(priority = 2)
     public void verifyItemRemovedFromCartWhenClickingRemoveButtonTest(){
         cartPage.clickRemoveButton();
         Boolean actualCartListDisplayed = cartPage.verifyTheCartListIsEmpty();
@@ -35,7 +28,7 @@ public class CartPageTest extends BaseTest{
         Assert.assertEquals( (boolean) actualCartListDisplayed, (boolean) expectedCartListDisplayed, "The cart isn't empty");
     }
 
-    @Test(priority = 3)
+    @Test(priority = 2)
     public void verifyTransferToInventoryPageWhenClickingContinueShoppingButtonTest(){
         cartPage.clickContinueShoppingButton();
         String actualTextOfInventoryPage = inventoryPage.getTextNameOfMainPageSection();
